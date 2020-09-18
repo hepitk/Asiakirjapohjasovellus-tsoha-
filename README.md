@@ -20,9 +20,9 @@ Toiminallisuus:
 
 Tekninen toteutus:
 
-- Tietokannassa on taulut: fraasit, fraasityypit, asiakirjapohjat, asiakirjatyypit ja käyttäjät.
-- Fraasit-taulusta löytyvät yksittäiset erilaiset fraasit (esim. "Kauppahinta maksetaan saajan pankkitilille välittömästi kauppakirjan allekirjoittamisen jälkeen." yms.). Fraasit-taulusta löytyy myös viite fraasityypit-tauluun.
-- Fraasityypit-taulusta löytyvät erilaiset fraasityypit (esim. Kauppahinta, Rasitukset, Muut ehdot yms.).
-- Asiakirjapohjat-taulusta löytyvät tallennetut asiakirjapohjat. Taulusta on viite asiakirjatyyppi-tauluun.
-- Asiakirjatyyppi-taulusta löytyvät erilaiset asisakirjatyypit (esim. Kiinteistön kauppakirja, Asunto-osakkeiden kauppakirja, Viranhaltijapäätös yms.).
-- Käyttäjät-taulusta löytyvät käyttäjätunnukset, salasanat ja tieto ylläpitäjäoikeuksista.
+- Tietokannassa on taulut: phrases, phrase_types, documents, document_types ja users.
+- Phrases-taulusta löytyvät yksittäiset erilaiset fraasit (esim. "Kauppahinta maksetaan saajan pankkitilille välittömästi kauppakirjan allekirjoittamisen jälkeen." yms.). Phrases-taulusta löytyy myös viite phrase_types-tauluun.
+- Phrase_types-taulusta löytyvät erilaiset fraasityypit (esim. Kauppahinta, Rasitukset, Muut ehdot yms.).
+- documents-taulusta löytyvät tallennetut asiakirjapohjat. Taulusta on viite document_types-tauluun.
+- Document_types-taulusta löytyvät erilaiset asisakirjatyypit (esim. Kiinteistön kauppakirja, Asunto-osakkeiden kauppakirja, Viranhaltijapäätös yms.).
+- Users-taulusta löytyvät käyttäjätunnukset, salasanat ja tieto ylläpitäjäoikeuksista.
