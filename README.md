@@ -33,7 +33,7 @@ Sovellus on vielä hyvin keskeneräinen. Sovelluksessa on tässä vaiheessa kirj
 
 Tietokantaan tarvitaan 20.9.2020 taulut:
 
-users (id SERIAL PRIMARY KEY, username TEXT UNIQUE, password TEXT);
-phrases (id SERIAL PRIMARY KEY, phrase TEXT, document_id INTEGER REFERENCES documents);
-documents (id SERIAL PRIMARY KEY, docuname TEXT);
+- users (id SERIAL PRIMARY KEY, username TEXT UNIQUE, password TEXT);
+- phrases (id SERIAL PRIMARY KEY, phrase TEXT, document_id INTEGER REFERENCES documents);
+- documents (id SERIAL PRIMARY KEY, docuname TEXT);
 
