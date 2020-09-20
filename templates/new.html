@@ -1,0 +1,16 @@
+<form action="/send" method="post">
+<hr>
+Fraasien määrä: {{ count }}
+<hr>
+{% for phrase in phrases %}
+<i>Fraasi:</i> {{ phrase[0] }}
+<p>
+<hr>
+{% endfor %}
+<hr>
+Fraasi: <br>
+<textarea name="content" rows="3" cols="40"></textarea>
+<br>
+<input type="submit" value="Luo fraasi">
+</form>
+<a href="/">Takaisin</a>

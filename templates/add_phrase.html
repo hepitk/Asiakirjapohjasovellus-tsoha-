@@ -1,0 +1,13 @@
+{{ topic }}
+<p>Lisää fraasi asiakirjapohjaan:</p>
+<hr>
+<form action="/add" method="POST">
+{% for choice in choices %}
+<input type="radio" name="add" value="{{ choice[0] }}"> {{ choice[1] }} <br>
+{% endfor %}
+<p>
+<input type="submit" value="Lisää">
+<input type="hidden" name="id" value="{{ id }}">
+</form>
+<hr>
+<a href="/">Takaisin</a>
