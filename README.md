@@ -1,6 +1,11 @@
 # Asiakirjapohjasovellus-tsoha-
 
-Sovelluksen tarkoituksena on palvella organisaation työntekijöitä erilaisten asiakirjojen luomisessa. Yleensä tietyn organisaation asiakirjanlaadintatyössä toistuvat samanlaiset fraasit ja asiakirjat, joten valmiiden fraasien ja asiakirjapohjien olemassaolo nopeuttaa työntekoa huomattavasti. Sovellukseen työntekijä saa tallennettua organisaation asiakirjoihin vaadittavia faaseja (esim. sopimuspykäliä, päätöspykäliä yms.) ja luotua näiden perusteella asiakirjapohjia. Fraasit on jaoteltu fraasityyppien (esim. kauppahinta) ja asiakirjapohjat asiakirjatyyppien (esim. kauppakirja) mukaan.
+Sovellus Herokussa: https://asiakirjapohjasovellus-tsoha.herokuapp.com/
+
+Sovelluksen tarkoituksena on palvella organisaation työntekijöitä erilaisten asiakirjojen luomisessa. 
+Yleensä tietyn organisaation asiakirjanlaadintatyössä toistuvat samanlaiset fraasit ja asiakirjat, joten valmiiden fraasien ja asiakirjapohjien olemassaolo nopeuttaa työntekoa huomattavasti. 
+Sovellukseen työntekijä saa tallennettua organisaation asiakirjoihin vaadittavia faaseja (esim. sopimuspykäliä, päätöspykäliä yms.) ja luotua näiden perusteella asiakirjapohjia. 
+Fraasit on jaoteltu fraasityyppien (esim. kauppahinta) ja asiakirjapohjat asiakirjatyyppien (esim. kauppakirja) mukaan.
 
 Lopullinen toiminnallisuus:
 
