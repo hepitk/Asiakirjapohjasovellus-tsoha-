@@ -1,4 +1,4 @@
-<form action="/send" method="post">
+<form action="/send" method="post" onsubmit="return check(this)">
 <hr>
 Fraasien määrä: {{ count }}
 <hr>
@@ -14,3 +14,13 @@ Fraasi: <br>
 <input type="submit" value="Luo fraasi">
 </form>
 <a href="/">Takaisin</a>
+
+<script>
+    function check(form) {
+        if (form.content.value.length > 5000) {
+            alert("Fraasin luonti ei onnistunut, sillä se on liian pitkä. Fraasin enimmäispituus on 5000 merkkiä.");
+            return false;
+        }
+        return true;
+    }
+</script>

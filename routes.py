@@ -1,7 +1,7 @@
 from app import app
 from db import db
 from flask import render_template, request, redirect
-import phrases, users
+import users
 
 @app.route("/")
 def index():    
@@ -11,8 +11,10 @@ def index():
     return render_template("index.html",polls=polls)
 
 @app.route("/new")
-def new():
-    list = phrases.get_list()
+def new():    
+    sql = "SELECT phrase from phrases"
+    result = db.session.execute(sql)
+    list = result.fetchall()
     return render_template("new.html",count=len(list),phrases=list)
 
 @app.route("/new_document")
@@ -22,10 +24,17 @@ def new_document():
 @app.route("/send", methods=["post"])
 def send():
     content = request.form["content"]
-    if phrases.send(content):
-        return redirect("/new")
-    else:
-        return render_template("error.html",message="Fraasin luonti ei onnistunut")
+    user_id = users.user_id()
+    if user_id == 0:
+        return render_template("error.html",message="Fraasin luonti ei onnistunut, sillä et ole kirjautunut sisään")
+    if len(content) > 5000:
+        return render_template("error.html",message="Fraasin luonti ei onnistunut, sillä se on liian pitkä. Fraasin enimmäispituus on 5000 merkkiä.")
+    if not (content and content.strip()):
+        return render_template("error.html",message="Fraasin luonti ei onnistunut, sillä se ei saa olla tyhjä.")
+    sql = "INSERT INTO phrases (phrase) VALUES (:content)"
+    db.session.execute(sql, {"content":content})
+    db.session.commit()
+    return redirect("/new")
 
 @app.route("/create", methods=["POST"])
 def create():
