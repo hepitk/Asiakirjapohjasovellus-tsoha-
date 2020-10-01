@@ -39,6 +39,13 @@ def send():
 @app.route("/create", methods=["POST"])
 def create():
     topic = request.form["topic"]
+    user_id = users.user_id()
+    if user_id == 0:
+        return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä et ole kirjautunut sisään")
+    if len(topic) > 100:
+        return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä sen nimi on liian pitkä. Asiakirjan nimen enimmäispituus on 100 merkkiä.")
+    if not (topic and topic.strip()):
+        return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä asiakirjan nimi ei saa olla tyhjä.")
     sql = "INSERT INTO documents (docuname) VALUES (:topic) RETURNING id"
     result = db.session.execute(sql, {"topic":topic})
     poll_id = result.fetchone()[0]
