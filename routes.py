@@ -92,9 +92,9 @@ def show_document_page(id):
 
 @app.route("/login",methods=["get","post"])
 def login():
-    if request.method == "get":
+    if request.method == "GET":
         return render_template("login.html")
-    if request.method == "post":
+    if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username,password):
@@ -109,9 +109,9 @@ def logout():
 
 @app.route("/register",methods=["get","post"])
 def register():
-    if request.method == "get":
+    if request.method == "GET":
         return render_template("register.html")
-    if request.method == "post":
+    if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         if users.register(username,password):
