@@ -1,3 +1,4 @@
+{% if session.user_id %}
 {{ docuname }}
 <p>Lisää fraasi asiakirjapohjaan:</p>
 <hr>
@@ -10,4 +11,5 @@
 <input type="hidden" name="id" value="{{ id }}">
 </form>
 <hr>
+{% endif %}
 <a href="/">Takaisin etusivulle</a>

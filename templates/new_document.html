@@ -1,11 +1,13 @@
-﻿<h1>Luo asiakirjapohja</h1>
+﻿{% if session.user_id %}
+<h1>Luo asiakirjapohja</h1>
 <hr>
 <form action="/new_document" method="post" onsubmit="return check(this)">
-    Asiakirjapohjan nimi: <br>
+Asiakirjapohjan nimi: <br>
 <textarea name="content" rows="3" cols="40"></textarea>
-    <br>
-    <input type="submit" value="Luo asiakirjapohja">
+<br>
+<input type="submit" value="Luo asiakirjapohja">
 </form>
+{% endif %}
 <a href="/">Takaisin etusivulle</a>
 
 <script>

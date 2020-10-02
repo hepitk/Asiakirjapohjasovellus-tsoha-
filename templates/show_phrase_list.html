@@ -1,4 +1,5 @@
-﻿<h1>Tallennetut fraasit</h1>
+﻿{% if session.user_id %}
+<h1>Tallennetut fraasit</h1>
 <hr>
 Fraasien määrä: {{ count }}
 <hr>
@@ -9,4 +10,5 @@ Fraasien määrä: {{ count }}
 {% endfor %}
 <hr>
 <p><a href="/new_phrase">Luo fraasi</a></p>
+{% endif %}
 <p><a href="/">Takaisin etusivulle</a></>

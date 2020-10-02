@@ -1,3 +1,4 @@
+{% if session.user_id %}
 <h1>Luo fraasi</h1>
 <hr>
 <form action="/new_phrase" method="post" onsubmit="return check(this)">
@@ -6,6 +7,7 @@ Fraasi: <br>
 <br>
 <input type="submit" value="Luo fraasi">
 </form>
+{% endif %}
 <a href="/">Takaisin etusivulle</a>
 
 <script>
