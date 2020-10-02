@@ -1,9 +1,9 @@
-{{ topic }}
+{{ docuname }}
 <p>Lisää fraasi asiakirjapohjaan:</p>
 <hr>
-<form action="/add" method="POST">
-{% for choice in choices %}
-<input type="radio" name="add" value="{{ choice[0] }}"> {{ choice[1] }} <br>
+<form action="/add_phrase" method="post">
+{% for phrase in phrases %}
+<input type="radio" name="add" value="{{ phrase[0] }}"> {{ phrase[1] }} <br>
 {% endfor %}
 <p>
 <input type="submit" value="Lisää">

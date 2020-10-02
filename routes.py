@@ -5,24 +5,20 @@ import users
 
 @app.route("/")
 def index():    
-    sql = "SELECT id, docuname FROM documents ORDER BY id ASC"
+    sql = "SELECT id,docuname FROM documents ORDER BY id ASC"
     result = db.session.execute(sql)
-    polls = result.fetchall()
-    return render_template("index.html",polls=polls)
+    documents = result.fetchall()
+    return render_template("index.html",documents=documents)
 
-@app.route("/new")
-def new():    
+@app.route("/new_phrase")
+def new_phrase_page():    
     sql = "SELECT phrase from phrases"
     result = db.session.execute(sql)
-    list = result.fetchall()
-    return render_template("new.html",count=len(list),phrases=list)
+    phrases = result.fetchall()
+    return render_template("new_phrase.html",count=len(phrases),phrases=phrases)
 
-@app.route("/new_document")
-def new_document():
-    return render_template("new_document.html")
-
-@app.route("/send", methods=["post"])
-def send():
+@app.route("/new_phrase",methods=["post"])
+def new_phrase_create():
     content = request.form["content"]
     user_id = users.user_id()
     if user_id == 0:
@@ -34,60 +30,63 @@ def send():
     sql = "INSERT INTO phrases (phrase) VALUES (:content)"
     db.session.execute(sql, {"content":content})
     db.session.commit()
-    return redirect("/new")
+    return redirect("/new_phrase")
 
-@app.route("/create", methods=["POST"])
-def create():
-    topic = request.form["topic"]
+@app.route("/new_document")
+def new_document_page():
+    return render_template("new_document.html")
+
+@app.route("/new_document",methods=["post"])
+def new_document_create():
+    content = request.form["content"]
     user_id = users.user_id()
     if user_id == 0:
         return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä et ole kirjautunut sisään")
-    if len(topic) > 100:
+    if len(content) > 100:
         return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä sen nimi on liian pitkä. Asiakirjan nimen enimmäispituus on 100 merkkiä.")
-    if not (topic and topic.strip()):
+    if not (content and content.strip()):
         return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä asiakirjan nimi ei saa olla tyhjä.")
-    sql = "INSERT INTO documents (docuname) VALUES (:topic) RETURNING id"
-    result = db.session.execute(sql, {"topic":topic})
+    sql = "INSERT INTO documents (docuname) VALUES (:content) RETURNING id"
+    result = db.session.execute(sql, {"content":content})
     poll_id = result.fetchone()[0]
     db.session.commit()
     return redirect("/")
 
 @app.route("/add_phrase/<int:id>")
-def poll(id):
+def add_phrase_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
-    topic = result.fetchone()[0]
+    docuname = result.fetchone()[0]
     sql = "SELECT id, phrase FROM phrases ORDER BY id ASC"
     result = db.session.execute(sql, {"id":id})
-    choices = result.fetchall()
-    return render_template("add_phrase.html",id=id,topic=topic,choices=choices)
+    phrases = result.fetchall()
+    return render_template("add_phrase.html",id=id,docuname=docuname,phrases=phrases)
 
-@app.route("/add", methods=["POST"])
-def answer():
-    poll_id = request.form["id"]
+@app.route("/add_phrase",methods=["post"])
+def add_phrase():
+    document_id = request.form["id"]
     if "add" in request.form:
-        choice_id = request.form["add"]
-        print (choice_id)
-        sql = "UPDATE phrases SET document_id=:poll_id WHERE id=:choice_id"
-        db.session.execute(sql, {"poll_id":poll_id,"choice_id":choice_id})
+        phrase_id = request.form["add"]        
+        sql = "UPDATE phrases SET document_id=:document_id WHERE id=:phrase_id"
+        db.session.execute(sql, {"document_id":document_id,"phrase_id":phrase_id})
         db.session.commit()
-    return redirect("/show_document/"+str(poll_id))
+    return redirect("/show_document/"+str(document_id))
 
 @app.route("/show_document/<int:id>")
 def result(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
-    topic = result.fetchone()[0]
+    docuname = result.fetchone()[0]
     sql = "SELECT phrase FROM phrases WHERE document_id=:id"
     result = db.session.execute(sql, {"id":id})
-    choices = result.fetchall()
-    return render_template("show_document.html",topic=topic,choices=choices)
+    phrases = result.fetchall()
+    return render_template("show_document.html",docuname=docuname,phrases=phrases)
 
-@app.route("/login", methods=["get","post"])
+@app.route("/login",methods=["get","post"])
 def login():
-    if request.method == "GET":
+    if request.method == "get":
         return render_template("login.html")
-    if request.method == "POST":
+    if request.method == "post":
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username,password):
@@ -100,11 +99,11 @@ def logout():
     users.logout()
     return redirect("/")
 
-@app.route("/register", methods=["get","post"])
+@app.route("/register",methods=["get","post"])
 def register():
-    if request.method == "GET":
+    if request.method == "get":
         return render_template("register.html")
-    if request.method == "POST":
+    if request.method == "post":
         username = request.form["username"]
         password = request.form["password"]
         if users.register(username,password):
