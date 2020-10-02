@@ -1,19 +1,12 @@
+<h1>Luo fraasi</h1>
+<hr>
 <form action="/new_phrase" method="post" onsubmit="return check(this)">
-<hr>
-Fraasien määrä: {{ count }}
-<hr>
-{% for phrase in phrases %}
-<i>Fraasi:</i> {{ phrase[0] }}
-<p>
-<hr>
-{% endfor %}
-<hr>
 Fraasi: <br>
 <textarea name="content" rows="3" cols="40"></textarea>
 <br>
 <input type="submit" value="Luo fraasi">
 </form>
-<a href="/">Takaisin</a>
+<a href="/">Takaisin etusivulle</a>
 
 <script>
     function check(form) {

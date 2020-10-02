@@ -1,0 +1,13 @@
+﻿<h1>Tallennetut asiakirjapohjat</h1>
+<hr>
+{% if session.user_id %}
+{% for document in documents %}
+Asiakirjapohjan nimi: {{ document[1] }}
+<br>
+<a href="/add_phrase/{{ document[0] }}">Muokkaa asiakirjapohjaa</a> |
+<a href="/show_document/{{ document[0] }}">Näytä asiakirjapohja</a>
+<br>
+<hr>
+{% endfor %}
+{% endif %}
+<a href="/">Takaisin etusivulle</a>

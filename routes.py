@@ -4,18 +4,12 @@ from flask import render_template, request, redirect
 import users
 
 @app.route("/")
-def index():    
-    sql = "SELECT id,docuname FROM documents ORDER BY id ASC"
-    result = db.session.execute(sql)
-    documents = result.fetchall()
-    return render_template("index.html",documents=documents)
+def index():
+    return render_template("index.html")
 
 @app.route("/new_phrase")
-def new_phrase_page():    
-    sql = "SELECT phrase from phrases"
-    result = db.session.execute(sql)
-    phrases = result.fetchall()
-    return render_template("new_phrase.html",count=len(phrases),phrases=phrases)
+def new_phrase_page():
+    return render_template("new_phrase.html")
 
 @app.route("/new_phrase",methods=["post"])
 def new_phrase_create():
@@ -30,7 +24,14 @@ def new_phrase_create():
     sql = "INSERT INTO phrases (phrase) VALUES (:content)"
     db.session.execute(sql, {"content":content})
     db.session.commit()
-    return redirect("/new_phrase")
+    return redirect("/show_phrase_list")
+
+@app.route("/show_phrase_list")
+def show_phrase_list_page():    
+    sql = "SELECT phrase from phrases"
+    result = db.session.execute(sql)
+    phrases = result.fetchall()
+    return render_template("show_phrase_list.html",count=len(phrases),phrases=phrases)
 
 @app.route("/new_document")
 def new_document_page():
@@ -50,7 +51,7 @@ def new_document_create():
     result = db.session.execute(sql, {"content":content})
     poll_id = result.fetchone()[0]
     db.session.commit()
-    return redirect("/")
+    return redirect("/show_document_list")
 
 @app.route("/add_phrase/<int:id>")
 def add_phrase_page(id):
@@ -61,6 +62,13 @@ def add_phrase_page(id):
     result = db.session.execute(sql, {"id":id})
     phrases = result.fetchall()
     return render_template("add_phrase.html",id=id,docuname=docuname,phrases=phrases)
+
+@app.route("/show_document_list")
+def show_document_list_page():
+    sql = "SELECT id,docuname FROM documents ORDER BY id ASC"
+    result = db.session.execute(sql)
+    documents = result.fetchall()
+    return render_template("show_document_list.html",documents=documents)
 
 @app.route("/add_phrase",methods=["post"])
 def add_phrase():
@@ -73,7 +81,7 @@ def add_phrase():
     return redirect("/show_document/"+str(document_id))
 
 @app.route("/show_document/<int:id>")
-def result(id):
+def show_document_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
     docuname = result.fetchone()[0]

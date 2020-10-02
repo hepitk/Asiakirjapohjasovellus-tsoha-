@@ -1,0 +1,12 @@
+﻿<h1>Tallennetut fraasit</h1>
+<hr>
+Fraasien määrä: {{ count }}
+<hr>
+{% for phrase in phrases %}
+<i>Fraasi:</i> {{ phrase[0] }}
+<p>
+<hr>
+{% endfor %}
+<hr>
+<p><a href="/new_phrase">Luo uusi fraasi</a></p>
+<p><a href="/">Takaisin etusivulle</a></>
