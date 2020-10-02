@@ -24,7 +24,7 @@ def new_phrase_create():
     sql = "INSERT INTO phrases (phrase) VALUES (:content)"
     db.session.execute(sql, {"content":content})
     db.session.commit()
-    return redirect("/show_phrase_list")
+    return redirect("/new_phrase")
 
 @app.route("/show_phrase_list")
 def show_phrase_list_page():    

@@ -7,6 +7,7 @@ Fraasi: <br>
 <br>
 <input type="submit" value="Luo fraasi">
 </form>
+<p><a href="/show_phrase_list">Näytä fraasit</a></p>
 {% endif %}
 <a href="/">Takaisin etusivulle</a>
 
@@ -16,6 +17,7 @@ Fraasi: <br>
             alert("Fraasin luonti ei onnistunut, sillä se on liian pitkä. Fraasin enimmäispituus on 5000 merkkiä.");
             return false;
         }
+        alert("Fraasi on luotu");
         return true;
     }
 </script>
