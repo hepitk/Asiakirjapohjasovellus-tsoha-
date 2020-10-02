@@ -53,6 +53,13 @@ def new_document_create():
     db.session.commit()
     return redirect("/show_document_list")
 
+@app.route("/show_document_list")
+def show_document_list_page():
+    sql = "SELECT id,docuname FROM documents ORDER BY id ASC"
+    result = db.session.execute(sql)
+    documents = result.fetchall()
+    return render_template("show_document_list.html",documents=documents)
+
 @app.route("/add_phrase/<int:id>")
 def add_phrase_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
@@ -62,13 +69,6 @@ def add_phrase_page(id):
     result = db.session.execute(sql, {"id":id})
     phrases = result.fetchall()
     return render_template("add_phrase.html",id=id,docuname=docuname,phrases=phrases)
-
-@app.route("/show_document_list")
-def show_document_list_page():
-    sql = "SELECT id,docuname FROM documents ORDER BY id ASC"
-    result = db.session.execute(sql)
-    documents = result.fetchall()
-    return render_template("show_document_list.html",documents=documents)
 
 @app.route("/add_phrase",methods=["post"])
 def add_phrase():
