@@ -1,12 +1,12 @@
-<h1>Asiakirjapohjasovellus</h1>
+{% extends "layout.html" %}
+{% block title %}Etusivu{% endblock %}
+{% block content %}
+<h2>Etusivu</h2>
 <hr>
 {% if session.user_id %}
 <p>Olet kirjautunut sisään. </p>
-<p><a href="/new_phrase">Luo fraasi</a></p>
-<p><a href="/show_phrase_list">Näytä fraasit</a></p>
-<p><a href="/new_document">Luo uusi tyhjä asiakirjapohja</a></p>
-<p><a href="/show_document_list">Näytä asiakirjapohjat ja lisää asiakirjapohjiin fraaseja</a></p>
 <p><a href="/logout">Kirjaudu ulos</a></p>
 {% else %}
 <p><a href="/login">Kirjaudu sisään</a></p>
 {% endif %}
+{% endblock %}

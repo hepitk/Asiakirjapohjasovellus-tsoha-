@@ -1,0 +1,13 @@
+﻿<!doctype html>
+<title>Asiakirjapohjasovellus - {% block title %}{% endblock %}</title>
+<h1>Asiakirjapohjasovellus</h1>
+<a href="/">Etusivu</a>&nbsp;|
+{% if session.user_id %}
+<a href="/new_phrase">Luo fraasi</a>&nbsp;|
+<a href="/show_phrase_list">Tallennetut fraasit</a>&nbsp;|
+<a href="/new_document">Luo tyhjä asiakirjapohja</a>&nbsp;|
+<a href="/show_document_list">Asiakirjapohjien muokkaus</a>&nbsp;|
+{% endif %}
+<a href="/login">Kirjautuminen</a>
+<hr>
+{% block content %}{% endblock %}

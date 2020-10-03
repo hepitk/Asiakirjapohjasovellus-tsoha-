@@ -1,5 +1,8 @@
+{% extends "layout.html" %}
+{% block title %}Lisää fraasi asiakirjapohjaan{% endblock %}
+{% block content %}
 {% if session.user_id %}
-{{ docuname }}
+<h2>{{ docuname }}</h2>
 <p>Lisää fraasi asiakirjapohjaan:</p>
 <hr>
 <form action="/add_phrase" method="post">
@@ -13,3 +16,4 @@
 <hr>
 {% endif %}
 <p><a href="/">Takaisin etusivulle</a></p>
+{% endblock %}

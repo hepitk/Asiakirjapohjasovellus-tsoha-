@@ -1,4 +1,7 @@
-<h1>Rekisteröi uusi käyttäjä</h1>
+{% extends "layout.html" %}
+{% block title %}Rekisteröi uusi käyttäjä{% endblock %}
+{% block content %}
+<h2>Rekisteröi uusi käyttäjä</h2>
 <hr>
 <form action="/register" method="post">
 Tunnus: <input type="text" name="username">
@@ -8,3 +11,4 @@ Salasana: <input type="password" name="password">
 <input type="submit" value="Luo tunnus">
 </form>
 <a href="/login">Takaisin kirjautumiseen</a>
+{% endblock %}

@@ -1,5 +1,8 @@
-﻿{% if session.user_id %}
-<h1>Tallennetut fraasit</h1>
+﻿{% extends "layout.html" %}
+{% block title %}Tallennetut fraasit{% endblock %}
+{% block content %}
+{% if session.user_id %}
+<h2>Tallennetut fraasit</h2>
 <hr>
 Fraasien määrä: {{ count }}
 <hr>
@@ -8,7 +11,7 @@ Fraasien määrä: {{ count }}
 <p>
 <hr>
 {% endfor %}
-<hr>
 <p><a href="/new_phrase">Luo fraasi</a></p>
 {% endif %}
 <p><a href="/">Takaisin etusivulle</a></>
+{% endblock %}

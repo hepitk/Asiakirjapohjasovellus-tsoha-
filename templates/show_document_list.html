@@ -1,4 +1,7 @@
-﻿<h1>Tallennetut asiakirjapohjat</h1>
+﻿{% extends "layout.html" %}
+{% block title %}Tallennetut asiakirjapohjat{% endblock %}
+{% block content %}
+<h2>Asiakirjapohjien muokkaus</h2>
 <hr>
 {% if session.user_id %}
 {% for document in documents %}
@@ -11,3 +14,4 @@ Asiakirjapohjan nimi: {{ document[1] }}
 {% endfor %}
 {% endif %}
 <a href="/">Takaisin etusivulle</a>
+{% endblock %}

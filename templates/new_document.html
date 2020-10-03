@@ -1,5 +1,8 @@
-﻿{% if session.user_id %}
-<h1>Luo asiakirjapohja</h1>
+﻿{% extends "layout.html" %}
+{% block title %}Luo asiakirjapohja{% endblock %}
+{% block content %}
+{% if session.user_id %}
+<h2>Luo tyhjä asiakirjapohja</h2>
 <hr>
 <form action="/new_document" method="post" onsubmit="return check(this)">
 Asiakirjapohjan nimi: <br>
@@ -9,6 +12,7 @@ Asiakirjapohjan nimi: <br>
 </form>
 {% endif %}
 <a href="/">Takaisin etusivulle</a>
+{% endblock %}
 
 <script>
     function check(form) {
