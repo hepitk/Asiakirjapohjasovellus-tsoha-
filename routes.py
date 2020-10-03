@@ -65,7 +65,7 @@ def add_phrase_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
     docuname = result.fetchone()[0]
-    sql = "SELECT id, phrase FROM phrases ORDER BY id ASC"
+    sql = "SELECT id,phrase FROM phrases ORDER BY id ASC"
     result = db.session.execute(sql, {"id":id})
     phrases = result.fetchall()
     return render_template("add_phrase.html",id=id,docuname=docuname,phrases=phrases)
@@ -75,8 +75,8 @@ def add_phrase():
     document_id = request.form["id"]
     if "add" in request.form:
         phrase_id = request.form["add"]        
-        sql = "UPDATE phrases SET document_id=:document_id WHERE id=:phrase_id"
-        db.session.execute(sql, {"document_id":document_id,"phrase_id":phrase_id})
+        sql = "INSERT INTO phrases_in_documents (phrase_id,document_id) VALUES (:phrase_id,:document_id) ON CONFLICT ON CONSTRAINT phrases_in_documents_pkey DO UPDATE SET phrase_id=:phrase_id,document_id=:document_id"
+        db.session.execute(sql, {"phrase_id":phrase_id,"document_id":document_id})
         db.session.commit()
     return redirect("/show_document/"+str(document_id))
 
@@ -85,7 +85,7 @@ def show_document_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
     docuname = result.fetchone()[0]
-    sql = "SELECT phrase FROM phrases WHERE document_id=:id"
+    sql = "SELECT phrase_id FROM phrases_in_documents WHERE document_id=:id"
     result = db.session.execute(sql, {"id":id})
     phrases = result.fetchall()
     return render_template("show_document.html",docuname=docuname,phrases=phrases)
