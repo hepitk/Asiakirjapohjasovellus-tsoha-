@@ -29,7 +29,7 @@ Tekninen toteutus:
 Sovelluksen tilanne 4.10.2020:
 
 - Sovellus on vielä keskeneräinen. Sovelluksessa on tässä vaiheessa kirjautumismahdollisuus, fraasien lisääminen ja asiakirjapohjien lisääminen/muokkaaminen. 
-- Käytettävyyttä ja koodia tulee vielä parantaa. 
+- Käytettävyyttä ja koodia tulee vielä parantaa. Esim. koodi on suurimmaksi osaksi nyt yhtenä nippuna routes.py-tiedostossa, joten sitä voisi mahdollisesti pilkkoa. 
 - Ulkoasua ei ole vielä kehitetty juuri ollenkaan.
 - Käyttäjiä on vain yhtä tyyppiä, jolla on kaikki oikeudet. Pääkäyttäjän oikeudet poisto-oikeuksineen on lisättävä ohjelmaan.
 - Sovellukseen tulee mahdollisesti vielä lisäominaisuuksia, joita olen listannut alla.
