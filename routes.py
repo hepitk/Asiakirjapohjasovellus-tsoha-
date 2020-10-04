@@ -85,7 +85,7 @@ def show_document_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
     docuname = result.fetchone()[0]
-    sql = "SELECT phrase_id FROM phrases_in_documents WHERE document_id=:id"
+    sql = "SELECT p.phrase FROM phrases p LEFT JOIN phrases_in_documents d ON p.id=d.phrase_id WHERE d.document_id=:id"
     result = db.session.execute(sql, {"id":id})
     phrases = result.fetchall()
     return render_template("show_document.html",docuname=docuname,phrases=phrases)

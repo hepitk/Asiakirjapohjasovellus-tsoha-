@@ -5,14 +5,13 @@
 <h2>Luo tyhjä asiakirjapohja</h2>
 <hr>
 <form action="/new_document" method="post" onsubmit="return check(this)">
-Asiakirjapohjan nimi: <br>
+    Asiakirjapohjan nimi: <br>
 <textarea name="content" rows="3" cols="40"></textarea>
-<br>
-<input type="submit" value="Luo asiakirjapohja">
+    <br>
+    <input type="submit" value="Luo asiakirjapohja">
 </form>
 {% endif %}
 <a href="/">Takaisin etusivulle</a>
-{% endblock %}
 
 <script>
     function check(form) {
@@ -23,3 +22,4 @@ Asiakirjapohjan nimi: <br>
         return true;
     }
 </script>
+{% endblock %}

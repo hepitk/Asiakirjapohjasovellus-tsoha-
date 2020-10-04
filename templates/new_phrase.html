@@ -5,15 +5,15 @@
 <h2>Luo fraasi</h2>
 <hr>
 <form action="/new_phrase" method="post" onsubmit="return check(this)">
-Fraasi: <br>
+    Fraasi: <br>
 <textarea name="content" rows="3" cols="40"></textarea>
-<br>
-<input type="submit" value="Luo fraasi">
+    <br>
+    <input type="submit" value="Luo fraasi">
 </form>
 <p><a href="/show_phrase_list">Näytä fraasit</a></p>
 {% endif %}
 <a href="/">Takaisin etusivulle</a>
-{% endblock %}
+
 
 <script>
     function check(form) {
@@ -25,3 +25,4 @@ Fraasi: <br>
         return true;
     }
 </script>
+{% endblock %}
