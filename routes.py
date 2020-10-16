@@ -22,7 +22,7 @@ def new_phrase_create():
     if not (content and content.strip()):
         return render_template("error.html",message="Fraasin luonti ei onnistunut, sillä se ei saa olla tyhjä.")
     sql = "INSERT INTO phrases (phrase) VALUES (:content)"
-    db.session.execute(sql, {"content":content})
+    db.session.execute(sql,{"content":content})
     db.session.commit()
     return redirect("/new_phrase")
 
@@ -48,14 +48,14 @@ def new_document_create():
     if not (content and content.strip()):
         return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä asiakirjan nimi ei saa olla tyhjä.")
     sql = "INSERT INTO documents (docuname) VALUES (:content) RETURNING id"
-    result = db.session.execute(sql, {"content":content})
+    result = db.session.execute(sql,{"content":content})
     poll_id = result.fetchone()[0]
     db.session.commit()
     return redirect("/show_document_list")
 
 @app.route("/show_document_list")
 def show_document_list_page():
-    sql = "SELECT id,docuname FROM documents ORDER BY id ASC"
+    sql = "SELECT id,docuname FROM documents ORDER BY id"
     result = db.session.execute(sql)
     documents = result.fetchall()
     return render_template("show_document_list.html",documents=documents)
@@ -63,7 +63,7 @@ def show_document_list_page():
 @app.route("/add_phrase/<int:id>")
 def add_phrase_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
-    result = db.session.execute(sql, {"id":id})
+    result = db.session.execute(sql,{"id":id})
     docuname = result.fetchone()[0]
     sql = "SELECT id,phrase FROM phrases ORDER BY id ASC"
     result = db.session.execute(sql, {"id":id})
@@ -83,7 +83,7 @@ def add_phrase():
 @app.route("/show_document/<int:id>")
 def show_document_page(id):
     sql = "SELECT docuname FROM documents WHERE id=:id"
-    result = db.session.execute(sql, {"id":id})
+    result = db.session.execute(sql,{"id":id})
     docuname = result.fetchone()[0]
     sql = "SELECT p.phrase FROM phrases p LEFT JOIN phrases_in_documents d ON p.id=d.phrase_id WHERE d.document_id=:id"
     result = db.session.execute(sql, {"id":id})

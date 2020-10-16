@@ -5,17 +5,17 @@
 <h2>Luo tyhjä asiakirjapohja</h2>
 <hr>
 <form action="/new_document" method="post" onsubmit="return check(this)">
-    Asiakirjapohjan nimi: <br>
+Asiakirjapohjan nimi: <br>
 <textarea name="content" rows="3" cols="40"></textarea>
-    <br>
-    <input type="submit" value="Luo asiakirjapohja">
+<br>
+<input type="submit" value="Luo asiakirjapohja">
 </form>
 {% endif %}
 <a href="/">Takaisin etusivulle</a>
 
 <script>
-    function check(form) {
-        if (form.content.value.length > 100) {
+function check(form) {
+    if (form.content.value.length > 100) {
             alert("Asiakirjan luonti ei onnistunut, sillä sen nimi on liian pitkä. Asiakirjan nimen enimmäispituus on 100 merkkiä.");
             return false;
         }
