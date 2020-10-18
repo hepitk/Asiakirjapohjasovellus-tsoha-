@@ -2,6 +2,7 @@
 {% block title %}Näytä asiakirja{% endblock %}
 {% block content %}
 {% if session.user_id %}
+<div id="print">
 <h2>{{ docuname }}</h2>
 <hr>
 {% for phrase in phrases %}
@@ -9,11 +10,24 @@
 <p></p>
 {% endfor %}
 <hr>
+</div>
 <form>
 <br>
 <input type="button" value="Takaisin edelliselle sivulle" onclick="history.back()">
 <br>
-<input type="button" value="Tulosta asiakirjapohja" onclick="window.print()">
+<input type="button" value="Tulosta asiakirjapohja" onclick="print_page()">
 </form>
 {% endif %}
+
+<script>
+    function print_page() {
+        var prtContent = document.getElementById("print");
+        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+        WinPrint.document.write(prtContent.innerHTML);
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+        WinPrint.close();
+    }
+</script>
 {% endblock %}
