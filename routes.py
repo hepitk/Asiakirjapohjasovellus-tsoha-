@@ -48,8 +48,7 @@ def new_document_create():
     if not (content and content.strip()):
         return render_template("error.html",message="Asiakirjan luonti ei onnistunut, sillä asiakirjan nimi ei saa olla tyhjä.")
     sql = "INSERT INTO documents (docuname) VALUES (:content) RETURNING id"
-    result = db.session.execute(sql,{"content":content})
-    poll_id = result.fetchone()[0]
+    result = db.session.execute(sql,{"content":content})    
     db.session.commit()
     return redirect("/show_document_list")
 
