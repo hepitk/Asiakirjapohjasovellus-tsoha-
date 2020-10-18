@@ -8,45 +8,40 @@ Sovellukseen työntekijä saa tallennettua organisaation asiakirjoihin vaadittav
 
 Toiminnallisuus:
 
-- Sovelluksessa on yksinkertaistettuna kaksi eri toiminnallisuutta: fraasien lisääminen sovellukseen ja asiakirjapohjien luominen näiden fraasien perusteella. 
-- Asiakirjapohjia käyttäjä voi luoda ja tallentaa järjestelmään tallennettujen fraasien perustella.
-- Asiakirjapohjia tallennettaessa käyttäjä antaa asiakirjalle asiakirjatyypin.
+- Sovelluksessa on kaksi eri toiminnallisuutta: fraasien lisääminen sovellukseen ja asiakirjapohjien luominen ja muokkaaminen näiden fraasien perusteella.
+- Käyttäjä voi lisätä ja lukea fraaseja sekä lukea, muokata ja tulostaa asiakirjapohjia.
 
-- Käyttäjä voi olla peruskäyttäjä tai ylläpitäjä.
-- Peruskäyttäjä voi lisätä ja lukea fraaseja sekä tallentaa, lukea ja muokata asiakirjapohjia.
-- Lopullisestta sovelluksessa ylläpitäjä voi lisätä, lukea ja poistaa fraaseja sekä tallentaa, lukea, muokata ja poistaa asiakirjapohjia (tämä on vielä toteuttamatta).
+Ohjeet käyttöön:
 
-- Asiakirjapohjat käyttäjä muodostaa lukemalla fraaseja tietokannasta. Fraasit lisätään muokattavaan asiakirjapohjaan lisäysjärjestyksessä.
+1. Käyttäjän on ensimmäiseksi rekisteröitävä käyttäjätunnus.
+2. Käyttö aloitetaan luomalla tyhjä asiakirjapohja Luo tyhjä asiakirjapohja -sivulta.
+3. Käyttäjä lisää haluamansa fraasit tietokantaan Luo fraasi -sivulta.
+4. Asiakirjapohjien muokkaus -sivulta käyttäjä saa lisättyä tarvittavat fraasit haluttuun asiakirjapohjaan valitsemalla linkin: Lisää fraasi asiakirjapohjaan.
+5. Asiakirjapohjien muokkaus -sivulta käyttäjä pääsee Näytä / tulosta asiakirjapohja -linkistä muokkaamaansa asiakirjapohjaan, josta asiakirjapohjaa pytyy tarkastelemaan ja sen pystyy tulostamaan.
 
 Tekninen toteutus:
 
 - Tietokannassa on taulut: users, phrases, documents ja phrases_in_documents.
-- Users-taulusta löytyvät käyttäjätunnukset, salasanat ja tuleva tieto ylläpitäjäoikeuksista.
+- Users-taulusta löytyvät käyttäjätunnukset ja salasanat.
 - Phrases-taulusta löytyvät yksittäiset erilaiset fraasit (esim. "Kauppahinta maksetaan saajan pankkitilille välittömästi kauppakirjan allekirjoittamisen jälkeen." yms.).
 - Documents-taulusta löytyvät tallennetut asiakirjapohjat.
 - Phrases_in_documents-taulu on phrases- ja documents-taulujen join-taulu.
 
-Sovelluksen tilanne 4.10.2020:
+Sovelluksen tilanne 18.10.2020:
 
-- Sovellus on vielä keskeneräinen. Sovelluksessa on tässä vaiheessa kirjautumismahdollisuus, fraasien lisääminen ja asiakirjapohjien lisääminen/muokkaaminen. 
-- Käytettävyyttä ja koodia tulee vielä parantaa. Esim. koodi on suurimmaksi osaksi nyt yhtenä nippuna routes.py-tiedostossa, joten sitä voisi mahdollisesti pilkkoa. 
-- Ulkoasua ei ole vielä kehitetty juuri ollenkaan.
-- Käyttäjiä on vain yhtä tyyppiä, jolla on kaikki oikeudet. Pääkäyttäjän oikeudet poisto-oikeuksineen on lisättävä ohjelmaan.
-- Sovellukseen tulee mahdollisesti vielä lisäominaisuuksia, joita olen listannut alla.
+- Sovellus jäi suppeaksi. Monia suunniteltuja toiminnallisuuksia jäi lisäämättä. Kehitystarpeet:
 
-Sovellukseen mahdollisesti lisättäviä toiminnallisuuksia:
-
-- Fraaseja lisättäessä käyttäjä antaa fraasille fraasityypin.
-- Käyttäjän valitsema fraasityyppi määrittelee kappaleen asiakirjapohjassa. 
+- Käyttäjiä on nyt vain yhtä tyyppiä, jolla on kaikki oikeudet. Pääkäyttäjän oikeudet poisto-oikeuksineen olisi hyvä lisätä ohjelmaan.
+- Fraasien lisäys asiakirjoihin tapahtuu nyt fraasien luomisjärjestyksessä. Sovelluksen olisi parempi toimia niin, että fraasit tulisivat asiakirjapohjiin siinä järjestyksessä kuin ne lisäätään kyseiseen asiakirjapohjaan.
+- Asiakirjapohja olisi hyvä saada tallennettua sovelluksesta esim. .doc-muodossa, jolloin sitä voisi helposti muokata tekstieditorilla.
+- Fraaseja lisättäessä käyttäjä voisi antaa fraasille fraasityypin.
+- Käyttäjän valitsema fraasityyppi määrittelisi kappaleen asiakirjapohjassa. 
   Esim. jos kiinteistön kauppakirjaan halutaan ensimmäiseksi kappaleeksi kauppahinta, valitsee käyttäjä fraasityypiksi kauppahinnan. 
   Kauppahinta viittaa tiettyihin fraaseihin ja käyttäjä valitsee haluamansa fraasin lisättäväksi muokattavaan asiakirjapohjaan. 
   Tällöin ohjelma lisää asiakirjapohjaan kappaleen 1. Kauppahinta ja alle fraasin 1.1, joka on haluttu fraasi.
-- Asiakirjapohjalle annetaan asiakirjatyyppi, joka määrittää asiakirjapohjan otsikon asiakirjapohjan nimen asemesta.
-- Tietokannassa on siis lisäksi taulut: phrase_types, document_types ja tarvittavat join-taulut.
-- Phrase_types-taulusta löytyvät erilaiset fraasityypit (esim. Kauppahinta, Rasitukset, Muut ehdot yms.).
-- Document_types-taulusta löytyvät erilaiset asisakirjatyypit (esim. Kiinteistön kauppakirja, Asunto-osakkeiden kauppakirja, Viranhaltijapäätös yms.).
+- Asiakirjapohjalle voisi antaa asiakirjatyypin, joka määrittää asiakirjapohjan otsikon asiakirjapohjan nimen asemesta.
 
-Tietokannassa on 4.10.2020 taulut:
+Tietokannassa on 18.10.2020 taulut:
 
 CREATE TABLE users (id SERIAL PRIMARY KEY, username TEXT UNIQUE, password TEXT);
 CREATE TABLE phrases (id SERIAL PRIMARY KEY, phrase TEXT);
