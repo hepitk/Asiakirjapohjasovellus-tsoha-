@@ -40,6 +40,7 @@ Sovelluksen tilanne 18.10.2020:
   Kauppahinta viittaa tiettyihin fraaseihin ja käyttäjä valitsee haluamansa fraasin lisättäväksi muokattavaan asiakirjapohjaan. 
   Tällöin ohjelma lisää asiakirjapohjaan kappaleen 1. Kauppahinta ja alle fraasin 1.1, joka on haluttu fraasi.
 - Asiakirjapohjalle voisi antaa asiakirjatyypin, joka määrittää asiakirjapohjan otsikon asiakirjapohjan nimen asemesta.
+- Tietokantapyyntöjä koskeva koodi olisi ollut syytä laittaa erillisiin tiedostoihin kurssin ohjeiden mukaisesti.
 
 Tietokannassa on 18.10.2020 taulut:
 
