@@ -6,7 +6,7 @@
     <h2>{{ docuname }}</h2>
     <hr>
     {% for phrase in phrases %}
-    {{ phrase[0] }}. {{ phrase[1] }}
+    {{ loop.index }}. {{ phrase[0] }}
     <p></p>
     {% endfor %}
     <hr>
