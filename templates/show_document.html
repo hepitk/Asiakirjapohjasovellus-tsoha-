@@ -3,19 +3,19 @@
 {% block content %}
 {% if session.user_id %}
 <div id="print">
-<h2>{{ docuname }}</h2>
-<hr>
-{% for phrase in phrases %}
-{{ phrase[0] }}. {{ phrase[1] }}
-<p></p>
-{% endfor %}
-<hr>
+    <h2>{{ docuname }}</h2>
+    <hr>
+    {% for phrase in phrases %}
+    {{ phrase[0] }}. {{ phrase[1] }}
+    <p></p>
+    {% endfor %}
+    <hr>
 </div>
 <form>
-<br>
-<input type="button" value="Takaisin edelliselle sivulle" onclick="history.back()">
-<br>
-<input type="button" value="Tulosta asiakirjapohja" onclick="print_page()">
+    <br>
+    <input type="button" value="Takaisin edelliselle sivulle" onclick="history.back()">
+    <br>
+    <input type="button" value="Tulosta asiakirjapohja" onclick="print_page()">
 </form>
 {% endif %}
 

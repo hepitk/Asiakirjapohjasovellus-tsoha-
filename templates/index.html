@@ -10,13 +10,13 @@
 <p>Luo tyhjä asiakirjapohja -sivulla voit luoda uuden tyhjän asiakirjapohjan, johon voit luomisen jälkeen lisätä tallennettuja fraaseja Asiakirjapohjan muokkaus -sivun kautta.</p>
 <p>Asiakirjapohjien muokkaus -sivulla voit katsella ja muokata luotuja asiakirjapohjia ja lisätä niihin luotuja fraaseja. Tällä sivulla voit muokata ja tulostaa lopullisen asiakirjapohjan.</p>
 <form action="/logout">
-<br>
-<input type="submit" value="Kirjaudu ulos">
+    <br>
+    <input type="submit" value="Kirjaudu ulos">
 </form>
 {% else %}
 <form action="/login">
-<br>
-<input type="submit" value="Kirjaudu sisään">
+    <br>
+    <input type="submit" value="Kirjaudu sisään">
 </form>
 {% endif %}
 {% endblock %}
