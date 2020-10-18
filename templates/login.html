@@ -5,10 +5,12 @@
 <hr>
 <form action="/login" method="post">
 Tunnus: <input type="text" name="username">
-<p>
 Salasana: <input type="password" name="password">
-<p>
+<br>
 <input type="submit" value="Kirjaudu">
 </form>
-<a href="/register">Rekisteröi uusi käyttäjä</a>
+<form action="/register">
+<br>
+<input type="submit" value="Rekisteröi uusi käyttäjä" />
+</form>
 {% endblock %}

@@ -5,12 +5,18 @@
 <hr>
 {% if session.user_id %}
 <p>Olet kirjautunut sisään.</p>
-<p>Luo fraasi -sivulla käyttäjä voi lisätä uuden fraasin tietokantaan.</p>
-<p>Tallennetut fraasit -sivulla käyttäjä voi tarkistaa kaikki tietokannassa olevat Luo fraasi -sivulla luodut fraasit.</p>
-<p>Luo tyhjä asiakirjapohja -sivulla käyttäjä voi luoda uuden tyhjän asiakirjapohjan, johon voi tämän jälkeen lisätä Luo fraasu-kohdassa luotuja fraaseja Asiakirjapohjan muokkaus -sivun kautta.</p>
-<p>Asiakirjapohjien muokkaus -sivulla käyttäjä voi katsella ja muokata luotuja asiakirjapohjia ja lisätä niihin Luo fraasi -sivulla luotuja fraaseja. Tuloksena käyttäjä muodostaa lopullisen asiakirjapohjan, jonka voi lopullisessa sovelluksessa tulostaa .doc-muodossa(kehitteillä).</p>
-<p><a href="/logout">Kirjaudu ulos</a></p>
+<p>Luo fraasi -sivulla voit lisätä uuden fraasin tietokantaan.</p>
+<p>Tallennetut fraasit -sivulla voit tarkistaa kaikki tietokannassa olevat fraasit, jotka on luotu Luo fraasi -sivun kautta.</p>
+<p>Luo tyhjä asiakirjapohja -sivulla voit luoda uuden tyhjän asiakirjapohjan, johon voit luomisen jälkeen lisätä tallennettuja fraaseja Asiakirjapohjan muokkaus -sivun kautta.</p>
+<p>Asiakirjapohjien muokkaus -sivulla voit katsella ja muokata luotuja asiakirjapohjia ja lisätä niihin luotuja fraaseja. Tällä sivulla voit muokata ja tulostaa lopullisen asiakirjapohjan.</p>
+<form action="/logout">
+<br>
+<input type="submit" value="Kirjaudu ulos">
+</form>
 {% else %}
-<p><a href="/login">Kirjaudu sisään</a></p>
+<form action="/login">
+<br>
+<input type="submit" value="Kirjaudu sisään">
+</form>
 {% endif %}
 {% endblock %}

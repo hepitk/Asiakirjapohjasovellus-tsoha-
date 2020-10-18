@@ -5,13 +5,17 @@
 <hr>
 {% if session.user_id %}
 {% for document in documents %}
-Asiakirjapohjan nimi: {{ document[1] }}
+<b>{{ document[1] }}</b>
+<p></p>
+<form action="/add_phrase/{{ document[0] }}">
 <br>
-<a href="/add_phrase/{{ document[0] }}">Muokkaa asiakirjapohjaa</a> |
-<a href="/show_document/{{ document[0] }}">Näytä asiakirjapohja</a>
+<input type="submit" value="Lisää fraasi asiakirjapohjaan">
+</form>
+<form action="/show_document/{{ document[0] }}">
 <br>
+<input type="submit" value="Näytä / tulosta asiakirjapohja">
+</form>
 <hr>
 {% endfor %}
 {% endif %}
-<a href="/">Takaisin etusivulle</a>
 {% endblock %}

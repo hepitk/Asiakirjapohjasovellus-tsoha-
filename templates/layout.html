@@ -1,13 +1,26 @@
 ﻿<!doctype html>
-<title>Asiakirjapohjasovellus - {% block title %}{% endblock %}</title>
-<h1>Asiakirjapohjasovellus</h1>
-<a href="/">Etusivu</a>&nbsp;|
-{% if session.user_id %}
-<a href="/new_phrase">Luo fraasi</a>&nbsp;|
-<a href="/show_phrase_list">Tallennetut fraasit</a>&nbsp;|
-<a href="/new_document">Luo tyhjä asiakirjapohja</a>&nbsp;|
-<a href="/show_document_list">Asiakirjapohjien muokkaus</a>&nbsp;|
-{% endif %}
-<a href="/login">Kirjautuminen</a>
-<hr>
-{% block content %}{% endblock %}
+<link rel="stylesheet" type"text/css" href="{{ url_for('static', filename='main.css')}}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<body>
+    <title>Asiakirjapohjasovellus - {% block title %}{% endblock %}</title>
+    <div class="header">
+        <h1>Asiakirjapohjasovellus</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Etusivu</a></li>
+            {% if session.user_id %}
+            <li><a href="/new_phrase">Luo fraasi</a></li>
+            <li><a href="/show_phrase_list">Tallennetut fraasit</a></li>
+            <li><a href="/new_document">Luo tyhjä asiakirjapohja</a></li>
+            <li><a href="/show_document_list">Asiakirjapohjien muokkaus</a></li>
+            {% endif %}
+            <li><a href="/login">Kirjautuminen</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+      {% block content %}    
+      {% endblock %}
+    </div>
+

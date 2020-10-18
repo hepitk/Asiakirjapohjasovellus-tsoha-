@@ -4,14 +4,13 @@
 {% if session.user_id %}
 <h2>Tallennetut fraasit</h2>
 <hr>
-Fraasien määrä: {{ count }}
+<b>Fraasit lisäysjärjestyksessä:</b>
 <hr>
 {% for phrase in phrases %}
-<i>Fraasi:</i> {{ phrase[0] }}
+{{ phrase[0] }}
 <p>
 <hr>
 {% endfor %}
-<p><a href="/new_phrase">Luo fraasi</a></p>
+<b>Fraasien määrä: {{ count }}</b>
 {% endif %}
-<p><a href="/">Takaisin etusivulle</a></>
 {% endblock %}
